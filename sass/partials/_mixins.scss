@@ -1,0 +1,11 @@
+@mixin initial {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@mixin flexbox($position, $justify, $align) {
+    display: flex;
+    flex-direction: $position;
+    justify-content: $justify;
+    align-items: $align;
+}
