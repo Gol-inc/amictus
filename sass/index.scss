@@ -4,20 +4,23 @@
 * {
     @include initial;
 }
-html body {
-    header {
-        @include flexbox(row, space-between, center);
-        background-color: $background;
-        padding: 10px;
-        position: absolute;
-        top: 0;
-        z-index: 5;
-        width: 100%;
-        .btn-menu,
-        .menu-hamburguesa {
-            display: none;
-            transition: 0.3s all;
-            height: 0;
+html {
+    scroll-behavior: smooth;
+    body {
+        header {
+            @include flexbox(row, space-between, center);
+            background-color: $background;
+            padding: 10px;
+            position: absolute;
+            top: 0;
+            z-index: 5;
+            width: 100%;
+            .btn-menu,
+            .menu-hamburguesa {
+                display: none;
+                transition: 0.3s all;
+                height: 0;
+            }
         }
         .logo {
             @include flexbox(row, center, center);
@@ -72,7 +75,8 @@ html body {
         padding: 10px;
         background: rgba($background, $alpha: 0.9);
         .producto-carrito,
-        .precio-final, .boton-checkout {
+        .precio-final,
+        .boton-checkout {
             width: 100%;
         }
         .producto-carrito {
@@ -348,6 +352,11 @@ html body {
             color: $cards;
             font-family: $spartan;
             text-align: center;
+            a {
+                font-weight: bolder;
+                text-decoration: none;
+                color: $cards;
+            }
         }
     }
 }
