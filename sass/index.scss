@@ -562,6 +562,9 @@ html {
 }
 @media (max-width: 560px) {
     html body {
+        .show-menu{
+            width: 100vw;
+        }
         main {
             .imagen {
                 .contenido {

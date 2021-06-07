@@ -490,6 +490,8 @@ html {
         html body main article #quienes-somos .contenidos .contenido-texto p {
           width: 350px; } }
 @media (max-width: 560px) {
+  html body .show-menu {
+    width: 100vw; }
   html body main .imagen .contenido .texto-imagen h1,
   html body main .imagen .contenido .texto-imagen p {
     text-align: center; }
