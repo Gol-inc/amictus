@@ -1,0 +1,83 @@
+@mixin header {
+    header {
+        @include flexbox(row, space-between, center);
+        background-color: $background;
+        padding: 10px;
+        position: absolute;
+        top: 0;
+        z-index: 5;
+        width: 100%;
+        .btn-menu,
+        .menu-hamburguesa {
+            display: none;
+            transition: 0.3s all;
+            height: 0;
+        }
+        .logo {
+            @include flexbox(row, center, center);
+            padding: 0px 10px;
+        }
+        .menu-principal {
+            @include flexbox(row, center, center);
+            a {
+                color: $cards;
+                text-decoration: none;
+                font-family: $spartan;
+                font-weight: bolder;
+                font-size: 15px;
+                padding: 25px;
+                transition: 0.5s all;
+            }
+        }
+        .sesion {
+            position: absolute;
+            right: 90px;
+            z-index: 6;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            p {
+                color: $cards;
+                font-family: $spartan;
+                font-weight: bolder;
+                text-decoration: none;
+                font-size: 10px;
+                padding: 5px;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+            .sesion-on {
+                font-size: 13px;
+            }
+            a {
+                color: $cards;
+                i {
+                    font-size: 19px;
+                }
+            }
+        }
+        .carrito {
+            @include flexbox(row, center, center);
+            position: relative;
+            padding: 10px;
+            .cantidad-carrito {
+                @include flexbox(row, center, center);
+                background-color: white;
+                height: 15px;
+                width: 15px;
+                position: absolute;
+                top: 20px;
+                left: 7px;
+                padding: 10px;
+                border-radius: 50px;
+                color: $background;
+                font-family: $questrial;
+            }
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

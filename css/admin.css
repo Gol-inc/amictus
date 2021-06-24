@@ -1,0 +1,298 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alata&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+html body {
+  padding: 15px; }
+  html body .titulo {
+    height: 100px;
+    vertical-align: middle;
+    display: flex;
+    flex-direction: row;
+    align-items: center; }
+    html body .titulo h1 {
+      color: #6b567a;
+      font-family: "Spartan", sans-serif; }
+  html body .estadisticas {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: space-between;
+    align-items: center; }
+    html body .estadisticas .card {
+      background: #6b567a;
+      height: 200px;
+      width: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+      html body .estadisticas .card i,
+      html body .estadisticas .card p,
+      html body .estadisticas .card h2 {
+        color: #f1e3d3; }
+      html body .estadisticas .card i {
+        font-size: 55px; }
+      html body .estadisticas .card h2 {
+        font-family: "Spartan", sans-serif;
+        padding: 15px 0px; }
+      html body .estadisticas .card p {
+        font-family: "Spartan", sans-serif;
+        font-size: 30px;
+        font-weight: bolder; }
+  html body .p {
+    background: #6b567a;
+    margin: 10px 0px; }
+    html body .p .titulo {
+      height: 75px;
+      display: flex;
+      flex-direction: row;
+      align-items: center; }
+      html body .p .titulo h2 {
+        color: #f1e3d3;
+        font-family: "Spartan", sans-serif;
+        padding: 0px 20px; }
+      html body .p .titulo button {
+        background: #f1e3d3;
+        color: #6b567a;
+        font-family: "Spartan", sans-serif;
+        padding: 12px 24px;
+        border: none;
+        outline: none;
+        transition: 0.3s all; }
+        html body .p .titulo button:hover {
+          cursor: pointer;
+          transform: scale(1.1); }
+    html body .p .modals {
+      background: rgba(0, 0, 0, 0.55);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      transition: 0.5s all; }
+      html body .p .modals form {
+        width: 300px;
+        background: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 10px;
+        margin: 0 auto;
+        position: relative; }
+        html body .p .modals form .cerrar {
+          position: absolute;
+          top: 5px;
+          right: 5px; }
+          html body .p .modals form .cerrar:hover {
+            cursor: pointer; }
+        html body .p .modals form h3 {
+          color: #6b567a;
+          font-family: "Spartan", sans-serif;
+          font-weight: bolder;
+          text-align: center;
+          margin: 10px auto; }
+        html body .p .modals form input {
+          padding: 10px;
+          padding-top: 25px;
+          padding-bottom: 2px;
+          width: 260px;
+          font-family: "Spartan", sans-serif;
+          border: none;
+          outline: none;
+          margin: 0px auto;
+          border: 2px solid #6b567a;
+          -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
+          -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
+          box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45); }
+        html body .p .modals form label {
+          position: relative;
+          top: 20px;
+          left: 22px;
+          font-size: 13px;
+          font-family: "Spartan", sans-serif;
+          font-weight: bolder;
+          color: #6b567a; }
+        html body .p .modals form .colores {
+          display: grid;
+          grid-template-columns: auto auto auto auto;
+          justify-content: center;
+          align-items: center;
+          height: 70px;
+          position: relative;
+          top: 10px;
+          left: 5px; }
+          html body .p .modals form .colores .color {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 6px; }
+            html body .p .modals form .colores .color label {
+              position: relative;
+              top: 0;
+              left: 0; }
+            html body .p .modals form .colores .color input[type="checkbox"] {
+              width: auto; }
+        html body .p .modals form button {
+          border: none;
+          width: 250px;
+          outline: none;
+          background: none;
+          padding: 12px 24px;
+          background: #6b567a;
+          color: #f1e3d3;
+          margin: 10px auto; }
+        html body .p .modals form .mensaje {
+          display: none; }
+    html body .p .disabled {
+      display: none; }
+    html body .p table {
+      background: #f1e3d3;
+      width: 100%;
+      border-collapse: collapse; }
+      html body .p table thead tr th {
+        padding: 10px;
+        font-family: "Spartan", sans-serif;
+        font-weight: bolder;
+        text-align: center;
+        border-bottom: 1px solid #6b567a; }
+      html body .p table tbody tr td {
+        font-family: "Spartan", sans-serif;
+        font-weight: lighter;
+        text-align: center;
+        margin: auto;
+        border-bottom: 1px solid #6b567a;
+        padding: 10px; }
+        html body .p table tbody tr td .editar,
+        html body .p table tbody tr td .eliminar {
+          color: white;
+          padding: 8px;
+          border: none;
+          border-radius: 10px;
+          transition: 0.4s all; }
+          html body .p table tbody tr td .editar i,
+          html body .p table tbody tr td .eliminar i {
+            font-size: 18px; }
+          html body .p table tbody tr td .editar:hover,
+          html body .p table tbody tr td .eliminar:hover {
+            cursor: pointer;
+            transform: scale(1.1); }
+        html body .p table tbody tr td .editar {
+          background: cornflowerblue; }
+        html body .p table tbody tr td .eliminar {
+          background: red; }
+        html body .p table tbody tr td .edit,
+        html body .p table tbody tr td .delete {
+          background: rgba(0, 0, 0, 0.55);
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          transition: 0.5s all; }
+          html body .p table tbody tr td .edit form,
+          html body .p table tbody tr td .delete form {
+            width: 300px;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 10px;
+            margin: 0 auto;
+            position: relative; }
+            html body .p table tbody tr td .edit form .closed,
+            html body .p table tbody tr td .delete form .closed {
+              position: absolute;
+              top: 5px;
+              right: 5px;
+              z-index: 10; }
+              html body .p table tbody tr td .edit form .closed:hover,
+              html body .p table tbody tr td .delete form .closed:hover {
+                cursor: pointer; }
+            html body .p table tbody tr td .edit form h3,
+            html body .p table tbody tr td .delete form h3 {
+              color: #6b567a;
+              font-family: "Spartan", sans-serif;
+              font-weight: bolder;
+              text-align: center;
+              margin: 10px auto; }
+            html body .p table tbody tr td .edit form input,
+            html body .p table tbody tr td .delete form input {
+              padding: 10px;
+              padding-top: 25px;
+              padding-bottom: 2px;
+              width: 260px;
+              font-family: "Spartan", sans-serif;
+              border: none;
+              outline: none;
+              margin: 0px auto;
+              border: 2px solid #6b567a;
+              -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
+              -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
+              box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45); }
+            html body .p table tbody tr td .edit form label,
+            html body .p table tbody tr td .delete form label {
+              position: relative;
+              top: 20px;
+              left: 22px;
+              font-size: 13px;
+              font-family: "Spartan", sans-serif;
+              font-weight: bolder;
+              color: #6b567a; }
+            html body .p table tbody tr td .edit form .colores,
+            html body .p table tbody tr td .delete form .colores {
+              display: grid;
+              grid-template-columns: auto auto auto auto;
+              justify-content: center;
+              align-items: center;
+              height: 70px;
+              position: relative;
+              top: 10px;
+              left: 5px; }
+              html body .p table tbody tr td .edit form .colores .color,
+              html body .p table tbody tr td .delete form .colores .color {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin: 6px; }
+                html body .p table tbody tr td .edit form .colores .color label,
+                html body .p table tbody tr td .delete form .colores .color label {
+                  position: relative;
+                  top: 0;
+                  left: 0; }
+                html body .p table tbody tr td .edit form .colores .color input[type="checkbox"],
+                html body .p table tbody tr td .delete form .colores .color input[type="checkbox"] {
+                  width: auto; }
+            html body .p table tbody tr td .edit form button,
+            html body .p table tbody tr td .delete form button {
+              border: none;
+              width: 250px;
+              outline: none;
+              background: none;
+              padding: 12px 24px;
+              background: #6b567a;
+              color: #f1e3d3;
+              margin: 10px auto; }
+            html body .p table tbody tr td .edit form .mensaje,
+            html body .p table tbody tr td .delete form .mensaje {
+              display: none; }
+        html body .p table tbody tr td .disabled {
+          display: none; }
+
+/*# sourceMappingURL=admin.css.map */

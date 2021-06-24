@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alata&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+html body header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #dfa2a9;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  width: 100%; }
+  html body header .btn-menu,
+  html body header .menu-hamburguesa {
+    display: none;
+    transition: 0.3s all;
+    height: 0; }
+  html body header .logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 10px; }
+  html body header .menu-principal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; }
+    html body header .menu-principal a {
+      color: #f1e3d3;
+      text-decoration: none;
+      font-family: "Spartan", sans-serif;
+      font-weight: bolder;
+      font-size: 15px;
+      padding: 25px;
+      transition: 0.5s all; }
+  html body header .sesion {
+    position: absolute;
+    right: 90px;
+    z-index: 6;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; }
+    html body header .sesion p {
+      color: #f1e3d3;
+      font-family: "Spartan", sans-serif;
+      font-weight: bolder;
+      text-decoration: none;
+      font-size: 10px;
+      padding: 5px; }
+      html body header .sesion p:hover {
+        cursor: pointer; }
+    html body header .sesion .sesion-on {
+      font-size: 13px; }
+    html body header .sesion a {
+      color: #f1e3d3; }
+      html body header .sesion a i {
+        font-size: 19px; }
+  html body header .carrito {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 10px; }
+    html body header .carrito .cantidad-carrito {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+      height: 15px;
+      width: 15px;
+      position: absolute;
+      top: 20px;
+      left: 7px;
+      padding: 10px;
+      border-radius: 50px;
+      color: #dfa2a9;
+      font-family: "Questrial", sans-serif; }
+    html body header .carrito:hover {
+      cursor: pointer; }
+
+/*# sourceMappingURL=registro.css.map */

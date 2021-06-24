@@ -1,0 +1,345 @@
+@import "partials/mixins";
+@import "partials/colors";
+@import "partials/fonts";
+@import "partials/header";
+@import "partials/registro";
+* {
+    @include initial;
+}
+html body {
+    padding: 15px;
+    .titulo {
+        height: 100px;
+        vertical-align: middle;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        h1 {
+            color: $text;
+            font-family: $spartan;
+        }
+    }
+    .estadisticas {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        justify-content: space-between;
+        align-items: center;
+        .card {
+            background: $text;
+            height: 200px;
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            i,
+            p,
+            h2 {
+                color: $cards;
+            }
+            i {
+                font-size: 55px;
+            }
+            h2 {
+                font-family: $spartan;
+                padding: 15px 0px;
+            }
+            p {
+                font-family: $spartan;
+                font-size: 30px;
+                font-weight: bolder;
+            }
+        }
+    }
+    .p {
+        background: $text;
+        margin: 10px 0px;
+        .titulo {
+            height: 75px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            h2 {
+                color: $cards;
+                font-family: $spartan;
+
+                padding: 0px 20px;
+            }
+            button {
+                background: $cards;
+                color: $text;
+                font-family: $spartan;
+                padding: 12px 24px;
+                border: none;
+                outline: none;
+                transition: 0.3s all;
+                &:hover {
+                    cursor: pointer;
+                    transform: scale(1.1);
+                }
+            }
+        }
+        .modals {
+            background: rgba($color: #000000, $alpha: 0.55);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            transition: 0.5s all;
+            form {
+                width: 300px;
+                background: white;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                padding: 10px;
+                margin: 0 auto;
+                position: relative;
+                .cerrar {
+                    position: absolute;
+                    top: 5px;
+                    right: 5px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                h3 {
+                    color: $text;
+                    font-family: $spartan;
+                    font-weight: bolder;
+                    text-align: center;
+                    margin: 10px auto;
+                }
+                input {
+                    padding: 10px;
+                    padding-top: 25px;
+                    padding-bottom: 2px;
+                    width: 260px;
+                    font-family: $spartan;
+                    border: none;
+                    outline: none;
+                    margin: 0px auto;
+                    border: 2px solid $text;
+                    -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
+                    -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
+                    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
+                }
+                label {
+                    position: relative;
+                    top: 20px;
+                    left: 22px;
+                    font-size: 13px;
+                    font-family: $spartan;
+                    font-weight: bolder;
+                    color: $text;
+                }
+                .colores {
+                    display: grid;
+                    grid-template-columns: auto auto auto auto;
+                    justify-content: center;
+                    align-items: center;
+
+                    height: 70px;
+                    position: relative;
+                    top: 10px;
+                    left: 5px;
+                    .color {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        margin: 6px;
+                        label {
+                            position: relative;
+                            top: 0;
+                            left: 0;
+                        }
+                        input[type="checkbox"] {
+                            width: auto;
+                        }
+                    }
+                }
+                button {
+                    border: none;
+                    width: 250px;
+                    outline: none;
+                    background: none;
+                    padding: 12px 24px;
+                    background: $text;
+                    color: $cards;
+                    margin: 10px auto;
+                }
+                .mensaje {
+                    display: none;
+                }
+            }
+        }
+        .disabled {
+            display: none;
+        }
+        table {
+            background: $cards;
+            width: 100%;
+            border-collapse: collapse;
+            thead {
+                tr {
+                    th {
+                        padding: 10px;
+                        font-family: $spartan;
+                        font-weight: bolder;
+                        text-align: center;
+                        border-bottom: 1px solid $text;
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    td {
+                        font-family: $spartan;
+                        font-weight: lighter;
+                        text-align: center;
+                        margin: auto;
+                        border-bottom: 1px solid $text;
+                        padding: 10px;
+                        .editar,
+                        .eliminar {
+                            color: white;
+                            padding: 8px;
+                            border: none;
+                            border-radius: 10px;
+                            transition: 0.4s all;
+                            i {
+                                font-size: 18px;
+                            }
+                            &:hover {
+                                cursor: pointer;
+                                transform: scale(1.1);
+                            }
+                        }
+                        .editar {
+                            background: cornflowerblue;
+                        }
+                        .eliminar {
+                            background: red;
+                        }
+
+                        .edit,
+                        .delete {
+                            background: rgba($color: #000000, $alpha: 0.55);
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            width: 100vw;
+                            height: 100vh;
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: center;
+                            align-items: center;
+                            transition: 0.5s all;
+                            form {
+                                width: 300px;
+                                background: white;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: flex-start;
+                                padding: 10px;
+                                margin: 0 auto;
+                                position: relative;
+                                .closed,
+                                .closed_d {
+                                    position: absolute;
+                                    top: 5px;
+                                    right: 5px;
+                                    z-index: 10;
+                                    &:hover {
+                                        cursor: pointer;
+                                    }
+                                }
+                                h3 {
+                                    color: $text;
+                                    font-family: $spartan;
+                                    font-weight: bolder;
+                                    text-align: center;
+                                    margin: 10px auto;
+                                }
+                                input {
+                                    padding: 10px;
+                                    padding-top: 25px;
+                                    padding-bottom: 2px;
+                                    width: 260px;
+                                    font-family: $spartan;
+                                    border: none;
+                                    outline: none;
+                                    margin: 0px auto;
+                                    border: 2px solid $text;
+                                    -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
+                                    -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
+                                    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
+                                }
+                                label {
+                                    position: relative;
+                                    top: 20px;
+                                    left: 22px;
+                                    font-size: 13px;
+                                    font-family: $spartan;
+                                    font-weight: bolder;
+                                    color: $text;
+                                }
+                                .colores {
+                                    display: grid;
+                                    grid-template-columns: auto auto auto auto;
+                                    justify-content: center;
+                                    align-items: center;
+
+                                    height: 70px;
+                                    position: relative;
+                                    top: 10px;
+                                    left: 5px;
+                                    .color {
+                                        display: flex;
+                                        flex-direction: column;
+                                        justify-content: center;
+                                        align-items: center;
+                                        margin: 6px;
+                                        label {
+                                            position: relative;
+                                            top: 0;
+                                            left: 0;
+                                        }
+                                        input[type="checkbox"] {
+                                            width: auto;
+                                        }
+                                    }
+                                }
+                                button {
+                                    border: none;
+                                    width: 250px;
+                                    outline: none;
+                                    background: none;
+                                    padding: 12px 24px;
+                                    background: $text;
+                                    color: $cards;
+                                    margin: 10px auto;
+                                }
+                                .mensaje {
+                                    display: none;
+                                }
+                            }
+                        }
+                        .disabled {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

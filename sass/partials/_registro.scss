@@ -1,0 +1,50 @@
+@mixin crear_cuenta {
+    h3 {
+        color: $text;
+        font-size: 30px;
+        font-family: $spartan;
+        text-align: center;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 10px;
+        margin: 0 auto;
+        width: 350px;
+        input {
+            padding: 10px;
+            padding-top: 25px;
+            padding-bottom: 2px;
+            width: 250px;
+            font-family: $spartan;
+            border: none;
+            outline: none;
+            margin: 0px auto;
+            border: 2px solid $text;
+            -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
+            -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
+            box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
+        }
+        label {
+            position: relative;
+            top: 20px;
+            left: 52px;
+            font-size: 13px;
+            font-family: $spartan;
+            font-weight: bolder;
+            color: $text;
+        }
+        button {
+            border: none;
+            width: 250px;
+            outline: none;
+            background: none;
+            padding: 12px 24px;
+            background: $text;
+            color: $cards;
+            margin: 10px auto;
+        }
+    }
+}

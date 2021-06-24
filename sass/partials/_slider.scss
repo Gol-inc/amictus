@@ -1,0 +1,71 @@
+@import "partials/mixins";
+@mixin slider {
+    /* Slideshow container */
+    .shadow-slider {
+        height: 100vh - 1vh;
+        width: 100%;
+        background: rgba($color: #000000, $alpha: 0.7);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        @include flexbox(row, center, center);
+        .contenido {
+            width: 80%;
+            @include flexbox(row, space-between, center);
+            .contenido-texto {
+                h1 {
+                    font-family: $poiret-one;
+                    color: $cards;
+                    font-size: 75px;
+                    font-weight: lighter;
+                    letter-spacing: 7px;
+                }
+                p {
+                    font-family: $poiret-one;
+                    color: $cards;
+                    font-size: 23px;
+                }
+            }
+        }
+    }
+    .slideshow-container {
+        width: 100%;
+        height: 100vh;
+        margin: 0 auto;
+        /* Hide the images by default */
+        .mySlides {
+            display: none;
+            img {
+                height: 100vh;
+                width: 100%;
+            }
+        }
+
+        /* Fading animation */
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+    }
+
+    @-webkit-keyframes fade {
+        from {
+            opacity: 0.4;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fade {
+        from {
+            opacity: 0.4;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+}
