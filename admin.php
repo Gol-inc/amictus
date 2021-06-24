@@ -15,6 +15,7 @@ $cant_imgs = 0;
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="images/logo.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/5b23b3e9e6.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -26,6 +27,7 @@ $cant_imgs = 0;
 <body>
     <div class="titulo">
         <h1>Dashboard</h1>
+        <a href="./index.php">Regresar a la página</a>
     </div>
     <div class="estadisticas">
         <div class="card usuarios">
