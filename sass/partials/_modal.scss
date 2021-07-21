@@ -1,0 +1,300 @@
+@mixin modal {
+    .modal-producto {
+        @include flexbox(row, center, center);
+        @include position(fixed, 0, 0, initial, initial);
+        @include size(100vh, 100vw);
+        animation-name: aparicion;
+        animation-duration: 0.5s;
+        animation-timing-function: 0.5s;
+        background: rgba($color: #000000, $alpha: 0.55);
+        opacity: 1;
+        overflow: -moz-hidden-unscrollable;
+        transition: 0.5s all;
+        z-index: 150;
+        .info-producto {
+            @include size(600px, 1000px);
+            background-color: white;
+            margin: 50px auto;
+
+            .head-producto {
+                @include flexbox(row, flex-end, center);
+                @include size(30px, initial);
+                i {
+                    font-size: 20px;
+                    padding: 0px 20px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+            .modal-descripcion {
+                @include flexbox(row, space-between, flex-start);
+                @include size(initial, 85%);
+                margin: 0px auto;
+                padding: 0px;
+                .modal-descripcion-imagen {
+                    @include flexbox(column, flex-start, flex-start);
+                    @include size(550px, 400px);
+                    @include position(relative, 0px, initial, initial, initial);
+                    .imagen-principal {
+                        img {
+                            @include size(450px, 400px);
+                        }
+                    }
+                    .imagenes-secundarias {
+                        @include flexbox(row, space-between, center);
+                        @include size(550px, 100%);
+                        margin: 5px auto;
+                        img {
+                            @include size(70px, 60px);
+                        }
+                    }
+                }
+                .modal-descripcion-texto {
+                    @include flexbox(column, space-between, center);
+                    @include size(550px, 450px);
+                    padding: 0px 10px;
+                    .descripcion-texto {
+                        .descripcion-principal {
+                            @include flexbox(column, center, flex-start);
+                            h1 {
+                                color: $text;
+                                font: bolder 23px $spartan;
+                                margin: 0 auto;
+                            }
+                            .precio {
+                                font: bolder 30px $questrial;
+                                padding: 5px 0px;
+                            }
+                        }
+                        p {
+                            padding: 10px 0px;
+                            color: $text;
+                            font: 17px $questrial;
+                            line-height: 19px;
+                            text-align: justify;
+                        }
+                    }
+
+                    .modal-boton {
+                        @include flexbox(column, space-between, flex-start);
+                        @include size(initial, 100%);
+                        margin: 0px auto;
+                        .colores {
+                            margin-left: 10px;
+                            padding: 10px 0px;
+                            h3 {
+                                color: $text;
+                                font: bolder 17px $spartan;
+                            }
+                            .datos-color {
+                                @include flexbox(row, flex-start, center);
+                                .col-prod {
+                                    @include flexbox(column, center, center);
+                                    @include size(initial, 35px);
+                                    margin: 0 5px;
+                                    .nombre-color {
+                                        color: $text;
+                                        font: bolder 11px $questrial;
+                                        text-transform: uppercase;
+                                    }
+                                }
+                            }
+                        }
+
+                        form {
+                            @include flexbox(row, space-between, flex-start);
+                            .cl input,
+                            .cantidad input {
+                                @include size(30px, 70px);
+                            }
+                            .cl label,
+                            .cantidad label {
+                                color: $text;
+                                font: 15px $questrial;
+                                margin-left: 10px;
+                            }
+
+                            button {
+                                @include size(50px, 200px);
+                                background-color: $cards;
+                                border: none;
+                                -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+                                -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+                                box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+                                color: $text;
+                                font: 15px $questrial;
+                                outline: none;
+                                padding: 12px 24px;
+                                transition: 0.5s all;
+                                &:hover {
+                                    cursor: pointer;
+                                    transform: scale(1.1);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .disabled {
+        animation-name: desaparicion;
+        animation-duration: 0.5s;
+        animation-timing-function: 0.5s;
+        display: none;
+        opacity: 0;
+    }
+}
+@mixin modal-laptop {
+    .modal-producto {
+        .info-producto {
+            @include size(500px, 95%);
+            .modal-descripcion {
+                .modal-descripcion-imagen {
+                    @include size(450px, 300px);
+                    .imagen-principal {
+                        img {
+                            @include size(350px, 300px);
+                        }
+                    }
+                    .imagenes-secundarias {
+                        @include size(initial, 300px);
+                        img {
+                            @include size(50px, 45px);
+                        }
+                    }
+                }
+                .modal-descripcion-texto {
+                    @include size(450px, 500px);
+                }
+            }
+        }
+    }
+}
+@mixin modal-tablet {
+    .modal-producto {
+        .info-producto {
+            .modal-descripcion {
+                @include size(450px, 90%);
+                .modal-descripcion-imagen {
+                    @include size(450px, 300px);
+                    .imagen-principal {
+                        img {
+                            @include size(350px, 300px);
+                        }
+                    }
+                    .imagenes-secundarias {
+                        @include size(initial, 250px);
+                    }
+                }
+                .modal-descripcion-texto {
+                    @include size(450px, 350px);
+                    .descripcion-texto {
+                        .descripcion-principal {
+                            h1 {
+                                font-size: 21px;
+                            }
+                            p {
+                                font-size: 24px;
+                            }
+                        }
+                        p {
+                            font-size: 14px;
+                        }
+                    }
+                    .modal-boton {
+                        .colores,
+                        form .cl label,
+                        form .cantidad label {
+                            margin-left: 0;
+                        }
+                        form {
+                            @include size(initial, 100%);
+                            .cl,
+                            .cantidad {
+                                @include flexbox(column, center, flex-start);
+                                padding-right: 10px;
+                            }
+                            .cl input,
+                            .cantidad input {
+                                @include size(30px, 60px);
+                            }
+                            button {
+                                @include size(45px, 130px);
+                                font-size: 11px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@mixin modal-tb2 {
+    .modal-producto {
+        .info-producto {
+            @include size(100vh, 90%);
+            overflow: -moz-hidden-unscrollable;
+            .modal-descripcion {
+                @include flexbox(column, center, center);
+                @include size(95vh, 100%);
+                .modal-descripcion-imagen {
+                    @include flexbox(column, center, center);
+                    @include size(auto, 90%);
+                }
+                .modal-descripcion-texto {
+                    @include size(auto, 90%);
+                }
+            }
+        }
+    }
+}
+@mixin modal-mobile {
+    .modal-producto {
+        .info-producto {
+            @include size(100vh, 100vw);
+            .modal-descripcion {
+                .modal-descripcion-imagen {
+                    @include size(initial, 100%);
+                    .imagen-principal {
+                        @include flexbox(column, center, center);
+                        img {
+                            @include size(350px, 70%);
+                        }
+                    }
+                }
+                .modal-descripcion-texto {
+                    @include size(100%, 95%);
+                    .descripcion-texto {
+                        .descripcion-principal {
+                            h1 {
+                                font-size: 16px;
+                                text-align: start;
+                            }
+                            p {
+                                font-size: 20px;
+                            }
+                        }
+                        p {
+                            font-size: 14px;
+                        }
+                    }
+                    .modal-boton {
+                        .colores {
+                            h3 {
+                                font-size: 12px;
+                            }
+                        }
+                        form {
+                            button {
+                                @include size(initial, 120px);
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

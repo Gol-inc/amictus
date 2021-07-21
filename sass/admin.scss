@@ -8,30 +8,28 @@
 }
 html body {
     padding: 15px;
-    .titulo {
-        height: 100px;
+    .header {
+        @include flexbox(row, space-between, center);
+        @include size(100px,100%);
         vertical-align: middle;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
         h1 {
             color: $text;
             font-family: $spartan;
         }
+        a {
+            color: $text;
+            font-family: $spartan;
+            margin-right: 10px;
+            text-decoration: none;
+        }
     }
+    
     .estadisticas {
-        display: grid;
-        grid-template-columns: auto auto auto auto;
-        justify-content: space-between;
-        align-items: center;
+        @include grid(4, space-between, center);
         .card {
+            @include flexbox(column, center, center);
+            @include size(200px, 250px);
             background: $text;
-            height: 200px;
-            width: 250px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             i,
             p,
             h2 {
@@ -45,9 +43,7 @@ html body {
                 padding: 15px 0px;
             }
             p {
-                font-family: $spartan;
-                font-size: 30px;
-                font-weight: bolder;
+                font: bolder 30px $spartan;
             }
         }
     }
@@ -55,23 +51,20 @@ html body {
         background: $text;
         margin: 10px 0px;
         .titulo {
-            height: 75px;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
+            @include flexbox(row, initial, center);
+            @include size(75px, initial);
             h2 {
                 color: $cards;
                 font-family: $spartan;
-
                 padding: 0px 20px;
             }
             button {
                 background: $cards;
+                border: none;
                 color: $text;
                 font-family: $spartan;
-                padding: 12px 24px;
-                border: none;
                 outline: none;
+                padding: 12px 24px;
                 transition: 0.3s all;
                 &:hover {
                     cursor: pointer;
@@ -79,102 +72,75 @@ html body {
                 }
             }
         }
-        .modals {
-            background: rgba($color: #000000, $alpha: 0.55);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
 
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
+        .modals {
+            @include flexbox(row, center, center);
+            @include position(fixed, 0, 0, initial, initial);
+            @include size(100vh, 100vw);
+            background: rgba($color: #000000, $alpha: 0.55);
             transition: 0.5s all;
             form {
-                width: 300px;
+                @include flexbox(column, center, flex-start);
+                @include position(relative, initial, initial, initial, initial);
+                @include size(initial, 300px);
                 background: white;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: flex-start;
-                padding: 10px;
                 margin: 0 auto;
-                position: relative;
+                padding: 10px;
                 .cerrar {
-                    position: absolute;
-                    top: 5px;
-                    right: 5px;
+                    @include position(absolute, 5px, initial, 5px, initial);
                     &:hover {
                         cursor: pointer;
                     }
                 }
                 h3 {
                     color: $text;
-                    font-family: $spartan;
-                    font-weight: bolder;
+                    font: bolder $spartan;
                     text-align: center;
                     margin: 10px auto;
                 }
                 input {
-                    padding: 10px;
-                    padding-top: 25px;
-                    padding-bottom: 2px;
-                    width: 260px;
-                    font-family: $spartan;
-                    border: none;
-                    outline: none;
-                    margin: 0px auto;
+                    @include size(initial, 260px);
                     border: 2px solid $text;
                     -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
                     -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
                     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
+                    font-family: $spartan;
+                    margin: 0px auto;
+                    outline: none;
+                    padding: 25px 10px 2px;
+                }
+                input[type="checkbox"] {
+                    @include size(25px, initial);
+                    box-shadow: none;
                 }
                 label {
-                    position: relative;
-                    top: 20px;
-                    left: 22px;
-                    font-size: 13px;
-                    font-family: $spartan;
-                    font-weight: bolder;
+                    @include position(relative, 20px, 22px, initial, initial);
                     color: $text;
+                    font: bolder 13px $spartan;
                 }
                 .colores {
-                    display: grid;
-                    grid-template-columns: auto auto auto auto;
-                    justify-content: center;
-                    align-items: center;
-
-                    height: 70px;
-                    position: relative;
-                    top: 10px;
-                    left: 5px;
+                    @include grid(4, center, center);
+                    @include position(relative, 10px, 5px, initial, initial);
+                    @include size(70px, initial);
                     .color {
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
+                        @include flexbox(column, center, center);
                         margin: 6px;
                         label {
-                            position: relative;
-                            top: 0;
-                            left: 0;
+                            @include position(relative, 0, 0, initial, initial);
                         }
                         input[type="checkbox"] {
-                            width: auto;
+                            @include size(initial, auto);
                         }
                     }
                 }
                 button {
-                    border: none;
-                    width: 250px;
-                    outline: none;
-                    background: none;
-                    padding: 12px 24px;
+                    @include size(initial, 250px);
                     background: $text;
+                    border: none;
                     color: $cards;
                     margin: 10px auto;
+                    outline: none;
+                    padding: 12px 24px;
                 }
                 .mensaje {
                     display: none;
@@ -185,35 +151,33 @@ html body {
             display: none;
         }
         table {
+            @include size(initial, 100%);
             background: $cards;
-            width: 100%;
             border-collapse: collapse;
             thead {
                 tr {
                     th {
-                        padding: 10px;
-                        font-family: $spartan;
-                        font-weight: bolder;
-                        text-align: center;
                         border-bottom: 1px solid $text;
+                        font: bolder 17px $spartan;
+                        padding: 10px;
+                        text-align: center;
                     }
                 }
             }
             tbody {
                 tr {
                     td {
-                        font-family: $spartan;
-                        font-weight: lighter;
-                        text-align: center;
-                        margin: auto;
                         border-bottom: 1px solid $text;
+                        font: lighter 14px $spartan;
+                        margin: auto;
                         padding: 10px;
+                        text-align: center;
                         .editar,
                         .eliminar {
-                            color: white;
-                            padding: 8px;
                             border: none;
                             border-radius: 10px;
+                            color: white;
+                            padding: 8px;
                             transition: 0.4s all;
                             i {
                                 font-size: 18px;
@@ -232,32 +196,21 @@ html body {
 
                         .edit,
                         .delete {
+                            @include flexbox(row, center, center);
+                            @include position(fixed, 0, 0, initial, initial);
+                            @include size(100vh, 100vw);
                             background: rgba($color: #000000, $alpha: 0.55);
-                            position: fixed;
-                            top: 0;
-                            left: 0;
-                            width: 100vw;
-                            height: 100vh;
-                            display: flex;
-                            flex-direction: row;
-                            justify-content: center;
-                            align-items: center;
                             transition: 0.5s all;
                             form {
-                                width: 300px;
+                                @include flexbox(column, center, flex-start);
+                                @include position(relative, initial, initial, initial, initial);
+                                @include size(initial, 300px);
                                 background: white;
-                                display: flex;
-                                flex-direction: column;
-                                justify-content: center;
-                                align-items: flex-start;
-                                padding: 10px;
                                 margin: 0 auto;
-                                position: relative;
+                                padding: 10px;
                                 .closed,
                                 .closed_d {
-                                    position: absolute;
-                                    top: 5px;
-                                    right: 5px;
+                                    @include position(absolute, 5px, initial, 5px, initial);
                                     z-index: 10;
                                     &:hover {
                                         cursor: pointer;
@@ -265,69 +218,53 @@ html body {
                                 }
                                 h3 {
                                     color: $text;
-                                    font-family: $spartan;
-                                    font-weight: bolder;
-                                    text-align: center;
+                                    font: bolder $spartan;
                                     margin: 10px auto;
+                                    text-align: center;
                                 }
                                 input {
-                                    padding: 10px;
-                                    padding-top: 25px;
-                                    padding-bottom: 2px;
-                                    width: 260px;
-                                    font-family: $spartan;
-                                    border: none;
-                                    outline: none;
-                                    margin: 0px auto;
+                                    @include size(initial, 260px);
                                     border: 2px solid $text;
                                     -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
                                     -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
                                     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
+                                    margin: 0px auto;
+                                    font-family: $spartan;
+                                    outline: none;
+                                    padding: 25px 10px 2px;
+                                }
+                                input[type="checkbox"] {
+                                    @include size(25px, initial);
+                                    box-shadow: none;
                                 }
                                 label {
-                                    position: relative;
-                                    top: 20px;
-                                    left: 22px;
-                                    font-size: 13px;
-                                    font-family: $spartan;
-                                    font-weight: bolder;
+                                    @include position(relative, 20px, 22px, initial, initial);
                                     color: $text;
+                                    font: bolder 13px $spartan;
                                 }
                                 .colores {
-                                    display: grid;
-                                    grid-template-columns: auto auto auto auto;
-                                    justify-content: center;
-                                    align-items: center;
-
-                                    height: 70px;
-                                    position: relative;
-                                    top: 10px;
-                                    left: 5px;
+                                    @include grid(4, center, center);
+                                    @include position(relative, 10px, 5px, initial, initial);
+                                    @include size(70px, initial);
                                     .color {
-                                        display: flex;
-                                        flex-direction: column;
-                                        justify-content: center;
-                                        align-items: center;
+                                        @include flexbox(column, center, center);
                                         margin: 6px;
                                         label {
-                                            position: relative;
-                                            top: 0;
-                                            left: 0;
+                                            @include position(relative, 0, 0, initial, initial);
                                         }
                                         input[type="checkbox"] {
-                                            width: auto;
+                                            @include size(initial, auto);
                                         }
                                     }
                                 }
                                 button {
+                                    @include size(initial, 250px);
                                     border: none;
-                                    width: 250px;
-                                    outline: none;
-                                    background: none;
-                                    padding: 12px 24px;
                                     background: $text;
                                     color: $cards;
                                     margin: 10px auto;
+                                    outline: none;
+                                    padding: 12px 24px;
                                 }
                                 .mensaje {
                                     display: none;
@@ -340,6 +277,17 @@ html body {
                     }
                 }
             }
+        }
+    }
+    .tablas {
+        @include flexbox(row, center, flex-start);
+        @include size(initial, 100%);
+        .colores,
+        .categorias {
+            @include size(initial, 50%);
+        }
+        .categorias {
+            margin-left: 10px;
         }
     }
 }

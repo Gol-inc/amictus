@@ -4,6 +4,7 @@
 @import "partials/header";
 @import "partials/registro";
 @import "partials/slider";
+@import "partials/modal";
 * {
     @include initial;
 }
@@ -11,31 +12,86 @@ html {
     scroll-behavior: smooth;
     body {
         @include header;
-
+        .usuario {
+            @include flexbox(row, flex-end, center);
+            @include position(sticky, initial, initial, initial, initial);
+            @include size(50px, 100%);
+            background-color: $background;
+            margin-right: 20px;
+            z-index: 3;
+            .sesion {
+                @include flexbox(row, center, center);
+                p {
+                    color: $cards;
+                    font: bolder 10px $spartan;
+                    padding: 5px;
+                    text-decoration: none;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                .sesion-on {
+                    @include flexbox(column, center, center);
+                    @include position(relative, initial, -20px, initial, initial);
+                    font-size: 13px;
+                    padding: 0px 10px;
+                    text-decoration: none;
+                    a,
+                    i {
+                        color: $cards;
+                    }
+                    a {
+                        font-family: $spartan;
+                        text-decoration: none;
+                    }
+                }
+                .sesion-off {
+                    @include flexbox(column, center, center);
+                    i {
+                        color: $cards;
+                    }
+                }
+                a {
+                    color: $cards;
+                    i {
+                        font-size: 19px;
+                    }
+                }
+            }
+        }
         .lista-carrito {
+            @include size(0, initial);
             display: none;
-            height: 0;
         }
         .show-menu {
             @include flexbox(column, center, center);
-            height: auto;
-            position: absolute;
-            top: 80px;
-            right: 0;
-            width: 500px;
-            z-index: 6;
-            padding: 10px;
+            @include position(fixed, 60px, initial, 0, initial);
+            @include size(auto, 500px);
             background: rgba($background, $alpha: 0.9);
+            padding: 10px;
+            z-index: 10;
             .producto-carrito,
             .precio-final,
             .boton-checkout {
-                width: 100%;
+                @include size(initial, 100%);
             }
             .producto-carrito {
                 @include flexbox(row, space-between, center);
+                @include position(relative, initial, initial, initial, initial);
                 background: rgba($cards, $alpha: 0.38);
                 margin: 5px auto;
                 padding: 8px;
+                form {
+                    @include position(absolute, 3px, initial, 5px, initial);
+                    button {
+                        background: none;
+                        border: none;
+                        outline: none;
+                        i {
+                            color: $text;
+                        }
+                    }
+                }
                 .datos-producto {
                     @include flexbox(row, flex-start, center);
                     .carrito-imagen {
@@ -46,22 +102,18 @@ html {
                         h3,
                         p {
                             color: $text;
-                            font-family: $spartan;
                         }
                         h3 {
-                            font-weight: bolder;
-                            font-size: 14px;
+                            font: bolder 14px $spartan;
                         }
                         p {
-                            font-size: 12px;
+                            font: 12px $spartan;
                         }
                     }
                 }
                 .carrito-precio {
                     color: $text;
-                    font-family: $spartan;
-                    font-weight: bolder;
-                    font-size: 16px;
+                    font: bolder 16px $spartan;
                 }
             }
             .precio-final {
@@ -86,16 +138,16 @@ html {
             .boton-checkout {
                 @include flexbox(row, center, center);
                 margin: 10px auto;
-                button {
+                .mercadopago-button {
                     background: $text;
-                    width: 200px;
-                    color: $cards;
-                    font-family: $spartan;
-                    padding: 12px 30px;
                     border: none;
                     -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
                     -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
                     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+                    color: $cards;
+                    font-family: $spartan;
+                    padding: 2px 30px !important;
+                    width: 150px !important;
                     &:hover {
                         cursor: pointer;
                     }
@@ -104,85 +156,74 @@ html {
         }
         .crear-cuenta,
         .iniciar-sesion {
+            @include flexbox(row, center, center);
+            @include size(100vh, 100vw);
+            @include position(fixed, 0, initial, initial, initial);
             background-color: rgba(0, 0, 0, 0.5);
-            position: fixed;
-            top: 0;
             z-index: 6;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
             .box-crear,
             .box-iniciar {
                 @include crear_cuenta;
-                padding: 10px;
+                @include size(auto, 400px);
+                @include position(relative, initial, initial, initial, initial);
                 background-color: white;
-                width: 400px;
-                height: auto;
-                position: relative;
+                padding: 10px;
                 #cerrar {
-                    position: absolute;
-                    right: 15px;
+                    @include position(absolute, initial, initial, 15px, initial);
                     font-size: 20px;
                 }
             }
             .mensaje {
-                position: absolute;
-                top: 30px;
-                z-index: 10;
-                width: 96vw;
-                padding: 15px;
+                @include size(auto, 96vw);
+                @include position(absolute, 70px, initial, initial, initial);
                 background: $cards;
                 color: $text;
-                font-size: 17px;
-                font-family: $spartan;
                 display: none;
+                font: 17px $spartan;
+                padding: 15px;
+                z-index: 1555;
             }
         }
-
         .disabled {
             display: none;
         }
         main {
             .imagen {
-                height: 100vh;
-                width: 100%;
-                margin: 0 auto;
-                position: relative;
-                @include flexbox(column, center, center);
+                @include flexbox(row, center, center);
+                @include position(relative, initial, initial, initial, initial);
+                @include size(90vh, 100%);
                 @include slider;
-                .flecha {
-                    color: $cards;
-                    font-size: 30px;
-                    position: absolute;
-                    bottom: 1.5em;
+                margin: 0 auto;
+                a {
+                    @include position(absolute, initial, initial, initial, 1.5em);
                     z-index: 6;
+                    .flecha {
+                        color: $cards;
+                        font-size: 30px;
+                    }
                 }
             }
 
             article {
+                @include size(initial, 80%);
+                margin: 0 auto;
                 .quienes-somos {
                     @include flexbox(column, space-around, center);
-                    height: 100vh;
+                    @include size(100vh, 100%);
                     h2 {
-                        padding: 10px;
                         color: $titles;
-                        font-family: $spartan;
-                        font-size: 30px;
-                        text-decoration: underline;
+                        font: bold 30px $spartan;
                         text-align: center;
+                        text-decoration: underline;
+                        padding: 10px;
                     }
                     .contenidos {
-                        width: 100%;
-                        @include flexbox(row, space-around, center);
-                        padding: 10px;
+                        @include flexbox(row, space-between, center);
+                        @include size(initial, 100%);
                         .contenido {
                             @include flexbox(row, center, center);
                             img {
-                                height: 600px;
-                                width: 500px;
+                                @include size(600px, 500px);
                                 -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
                                 -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
                                 box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
@@ -190,20 +231,17 @@ html {
                         }
                         .contenido-texto {
                             @include flexbox(column, center, center);
-                            width: 650px;
-                            height: 600px;
+                            @include size(600px, 650px);
                             padding: 20px;
                             h3 {
-                                color: $background;
-                                font-family: $spartan;
-                                font-size: 30px;
+                                color: $cards;
+                                font: bold 30px $spartan;
                             }
                             p {
-                                margin-top: 70px;
                                 color: $text;
-                                font-family: $questrial;
-                                font-size: 18px;
+                                font: 18px $questrial;
                                 line-height: 40px;
+                                margin-top: 70px;
                                 text-align: justify;
                             }
                         }
@@ -211,151 +249,204 @@ html {
                 }
                 #productos {
                     h2 {
+                        color: $titles;
+                        font: bolder 30px $spartan;
                         margin: 40px auto;
                         padding: 10px;
-                        color: $titles;
-                        font-family: $spartan;
-                        font-size: 30px;
-                        text-decoration: underline;
                         text-align: center;
+                        text-decoration: underline;
                     }
                     .productos {
-                        margin: 30px auto;
-                        display: grid;
-                        grid-template-columns: auto auto auto;
-                        .producto {
-                            @include flexbox(column, space-around, center);
-                            background-color: $cards;
-                            height: 530px;
-                            width: 320px;
-                            margin: 30px auto;
-                            -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
-                            -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
-                            box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
-                            .producto-imagen {
-                                height: 230px;
-                                width: 250px;
-                            }
-
-                            .producto-descripcion {
-                                width: 250px;
-                                @include flexbox(column, space-between, initial);
-                                height: 170px;
-                                position: relative;
-                                h3,
-                                p,
-                                h4 {
-                                    color: $text;
-                                    font-family: $questrial;
-                                }
-                                h3 {
-                                    text-align: center;
-                                    font-size: 21px;
-                                    height: 50px;
-                                    vertical-align: middle;
-                                }
-                                .descripcion {
-                                    font-weight: bolder;
-                                    font-size: 19px;
-                                    text-align: start;
-                                    i {
-                                        font-size: 16px;
-                                    }
-                                    &:hover {
-                                        cursor: pointer;
-                                    }
-                                }
-                                .descripcion-collapse {
-                                    padding: 5px 0px;
-                                    transition: 0.4s all;
-                                    display: none;
-                                }
-                                .collapsed {
-                                    display: flex;
-                                    position: absolute;
-                                    top: 90px;
-                                    width: 250px;
-                                    background-color: $cards;
-                                    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.35);
-                                }
-                                .caracteristicas {
-                                    @include flexbox(row, space-between, center);
-                                    padding: 5px 0px;
-                                    .colores {
-                                        @include flexbox(row, flex-start, center);
-                                        .color {
-                                            height: 25px;
-                                            width: 25px;
-                                            border-radius: 50px;
-                                            margin-right: 5px;
-                                        }
-                                    }
-                                    .precio {
-                                        width: 30%;
-                                        height: 100%;
-                                        p {
-                                            font-family: $spartan;
-                                            font-size: 20px;
-                                            font-weight: bolder;
-                                        }
-                                    }
-                                }
-                            }
-                            button {
-                                background-color: $background;
-                                height: 50px;
-                                width: 260px;
-                                color: $text;
-                                font-size: 16px;
-                                font-family: $questrial;
-                                margin-bottom: 20px;
-                                padding: 12px 24px;
-                                border: none;
-                                outline: none;
-                                -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-                                -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-                                box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+                        transition: 0.5s all;
+                        .destacados {
+                            @include flexbox(row, space-around, center);
+                            @include size(auto, 100%);
+                            margin: 15px auto;
+                            i {
+                                color: #c9c9c9;
+                                font-size: 30px;
                                 &:hover {
                                     cursor: pointer;
                                 }
                             }
+                            .productos-destacados {
+                                @include flexbox(row, flex-start, center);
+                                margin: 0px 20px;
+                                .producto {
+                                    @include flexbox(column, center, center);
+                                    @include position(relative, initial, 0px, initial, initial);
+                                    @include size(initial, 250px);
+                                    margin: 0px 40px;
+                                    transition: 0.5s all;
+                                    .producto-imagen {
+                                        @include size(325px, 250px);
+                                    }
+                                    .producto-descripcion {
+                                        @include flexbox(column, space-between, initial);
+                                        @include size(initial, 100%);
+                                        min-height: 90px;
+                                        h3 {
+                                            color: $text;
+                                            font: bold 20px $questrial;
+                                            margin: 10px auto;
+                                            text-align: center;
+                                            vertical-align: middle;
+                                            &:hover {
+                                                cursor: pointer;
+                                                text-decoration: underline;
+                                            }
+                                        }
+                                        .precio {
+                                            @include size(100%, initial);
+                                            margin: 5px auto;
+                                            p {
+                                                color: $text;
+                                                font: bolder 20px $spartan;
+                                                text-align: center;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
+                        .separador {
+                            @include size(1px, 100%);
+                            background: #a1a1a1;
+                            margin: 55px auto;
+                        }
+                        .mas-productos {
+                            @include flexbox(row, space-between, flex-start);
+                            @include size(initial, 100%);
+                            margin: 0 auto;
+                            min-height: 800px;
+                            .categorias {
+                                @include size(100%, 20%);
+                                margin: 0 auto;
+                                padding: 5px;
+                                h3 {
+                                    color: $titles;
+                                    font: bold 21px $spartan;
+                                }
+                                .menu-categorias {
+                                    @include flexbox(column, center, flex-start);
+                                    @include size(initial, 100%);
+                                    margin: 5px 0px;
+                                    .checkbox {
+                                        padding: 6px 0px;
+                                        input[type="checkbox"] {
+                                            display: none;
+                                            + label {
+                                                cursor: pointer;
+                                                &:before {
+                                                    @include size(15px, 15px);
+                                                    background: transparent;
+                                                    border: 2px solid $titles;
+                                                    border-radius: 5px;
+                                                    content: "";
+                                                    display: inline-block;
+                                                    margin: 0px 5px;
+                                                    text-align: center;
+                                                    vertical-align: middle;
+                                                }
+                                            }
+                                        }
+                                        input[type="checkbox"]:checked + label:before {
+                                            @include position(relative, initial, initial, initial, initial);
+                                            background: $titles;
+                                            content: "✔";
+                                            color: white;
+                                            font: bolder 11px;
+                                            z-index: 6;
+                                        }
+                                        label {
+                                            color: $titles;
+                                            font-family: $spartan;
+                                        }
+                                    }
+                                }
+                            }
+                            .productos {
+                                @include position(relative, initial, initial, initial, initial);
+                                @include grid(4, space-between, initial);
+                                @include size(initial, 95%);
+                                grid-row-gap: 30px;
+                                min-height: 20px;
+                                .producto {
+                                    @include flexbox(column, center, center);
+                                    @include size(initial, 250px);
+                                    transition: 0.5s all;
+                                    .producto-imagen {
+                                        @include size(325px, 250px);
+                                        min-height: 325px;
+                                    }
+                                    .producto-descripcion {
+                                        @include flexbox(column, space-between, center);
+                                        @include position(relative, initial, initial, initial, initial);
+                                        @include size(initial, 100%);
+                                        min-height: 100px;
+                                        h3 {
+                                            color: $text;
+                                            font: bold 20px $questrial;
+                                            margin: 10px auto;
+                                            text-align: center;
+                                            vertical-align: middle;
+                                            &:hover {
+                                                cursor: pointer;
+                                                text-decoration: underline;
+                                            }
+                                        }
+                                        .precio {
+                                            @include size(100%, initial);
+                                            margin: 5px auto;
+                                            p {
+                                                color: $text;
+                                                font: bolder 20px $spartan;
+                                                text-align: center;
+                                            }
+                                        }
+                                    }
+                                }
+                                .catalogo-vacio {
+                                    @include position(absolute, 50%, 50%, initial, initial);
+                                    color: $titles;
+                                    font-family: $spartan;
+                                    transform: translate(-50%, -50%);
+                                }
+                            }
+                        }
+                        @include modal;
                     }
                 }
             }
         }
         footer {
             @include flexbox(column, space-between, center);
-            background-color: $text;
+            background-color: $background;
             padding: 15px;
             .redes {
                 @include flexbox(row, center, center);
                 margin: 10px auto;
                 .red {
                     @include flexbox(row, center, center);
-                    background-color: $background;
-                    height: 60px;
-                    width: 60px;
-                    padding: 20px;
-                    margin: 10px 15px;
+                    @include position(relative, 0, 0, initial, initial);
+                    @include size(60px, 60px);
+                    background-color: $cards;
                     border-radius: 50px;
-                    position: relative;
-                    top: 0;
-                    left: 0;
                     -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
                     -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
                     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+                    margin: 10px 15px;
+                    padding: 20px;
                     transition: 0.5s all;
                     i {
-                        color: $cards;
+                        border-radius: 50px;
+                        color: $background;
                         font-size: 25px;
                         padding: 20px;
-                        border-radius: 50px;
                     }
                     &:hover {
+                        @include position(relative, -5px, -5px, initial, initial);
                         cursor: pointer;
-                        top: -5px;
-                        left: -5px;
                     }
                 }
             }
@@ -364,225 +455,156 @@ html {
                 font-family: $spartan;
                 text-align: center;
                 a {
+                    color: $cards;
                     font-weight: bolder;
                     text-decoration: none;
-                    color: $cards;
                 }
+            }
+        }
+    }
+}
+@media (max-width: 1800px) {
+    html body main article #productos .productos .mas-productos .productos {
+        @include grid(3, initial, initial);
+        .producto {
+            @include size(initial, 220px);
+            .producto-imagen {
+                @include size(300px, 220px);
             }
         }
     }
 }
 @media (max-width: 1367px) {
-    html body {
-        main {
-            article {
-                #quienes-somos {
-                    h2 {
+    html body main article {
+        @include size(initial, 90%);
+        #quienes-somos {
+            h2 {
+                font-size: 25px;
+            }
+            .contenidos .contenido-imagen {
+                img {
+                    @include size(500px, 400px);
+                }
+                .contenido-texto {
+                    h3 {
                         font-size: 25px;
                     }
-                    .contenidos {
-                        .contenido-imagen {
-                            img {
-                                height: 500px;
-                                width: 400px;
-                            }
-                        }
-                        .contenido-texto {
-                            h3 {
-                                font-size: 25px;
-                            }
-                            p {
-                                font-size: 17px;
-                            }
-                        }
+                    p {
+                        font-size: 17px;
                     }
                 }
-                #productos {
-                    h2 {
-                        font-size: 25px;
-                    }
-                    .productos {
-                        .producto {
-                            width: 330px;
-                        }
-                    }
-                }
+            }
+        }
+    }
+}
+@media (max-width: 1048px) {
+    html body main article #productos .productos .mas-productos {
+        .categorias {
+            margin: 0 0;
+        }
+        .productos .producto {
+            @include size(380px, 200px);
+            .producto-imagen {
+                @include size(initial, 200px);
+                min-height: 280px;
             }
         }
     }
 }
 @media (max-width: 1024px) {
-    html body {
-        main {
-            article {
-                #quienes-somos {
-                    .contenidos {
-                        .contenido-texto {
-                            width: 500px;
-                            p {
-                                font-size: 17px;
-                                line-height: 30px;
-                            }
-                        }
-                    }
+    html body main article {
+        #quienes-somos {
+            .contenidos .contenido-texto {
+                @include size(initial, 500px);
+                p {
+                    font-size: 17px;
+                    line-height: 30px;
                 }
-                #productos {
-                    .productos {
-                        .producto {
-                            width: 280px;
-                            height: 500px;
-                            .producto-imagen {
-                                margin-top: 10px;
-                                width: 230px;
-                                height: 190px;
-                            }
-                            .producto-descripcion {
-                                width: 230px;
-                                p {
-                                    font-size: 14px;
-                                }
-                                .descripcion-collapse {
-                                    width: 230px;
-                                    top: 95px;
-                                }
-                            }
-                            button {
-                                width: 230px;
-                            }
-                        }
+            }
+        }
+        #productos .productos {
+            .destacados .productos-destacados {
+                @include flexbox(row, space-around, center);
+                @include size(initial, 100%);
+                margin: 0 auto;
+                .producto {
+                    @include size(350px, 220px);
+                    margin: 0px 0px;
+                    .producto-imagen {
+                        @include size(260px, 220px);
+                    }
+                    .producto-descripcion {
+                        @include size(90px, 220px);
                     }
                 }
             }
+            @include modal-laptop;
         }
     }
 }
 @media (max-width: 900px) {
-    html body {
-        main {
-            article {
-                #quienes-somos {
-                    .contenidos {
-                        .contenido-imagen {
-                            img {
-                                height: 550px;
-                                width: 450px;
-                            }
-                        }
-                        .contenido-texto {
-                            width: 450px;
-                            height: 550px;
-                            p {
-                                margin-top: 20px;
-                            }
-                        }
-                    }
+    html body main article {
+        #quienes-somos {
+            .contenidos {
+                .contenido-imagen img {
+                    @include size(550px, 450px);
                 }
-                #productos {
-                    .productos {
-                        grid-template-columns: auto auto;
+                .contenido-texto {
+                    @include size(550px, 450px);
+                    p {
+                        margin-top: 20px;
                     }
                 }
             }
+        }
+        #productos .productos .mas-productos .productos {
+            @include size(initial, 65%);
+            @include grid(2, initial, initial);
         }
     }
 }
 @media (max-width: 768px) {
     html body {
-        header {
-            .menu-principal {
-                display: none;
-            }
-            .btn-menu {
-                height: 50px;
-                width: 50px;
-                @include flexbox(row, center, center);
-                .btn-hamb {
-                    height: 4px;
-                    width: 35px;
-                    background-color: white;
-                    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-                    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-                    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-                    &::after {
-                        position: absolute;
-                        content: "";
-                        height: 4px;
-                        width: 35px;
-                        background-color: white;
-                        transform: translateY(-10px);
-                        -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-                        -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-                        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-                        transition: all 0.3s ease-in-out;
-                    }
-                    &::before {
-                        position: absolute;
-                        content: "";
-                        height: 4px;
-                        width: 35px;
-                        background-color: white;
-                        transform: translateY(10px);
-                        -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-                        -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-                        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
-                        transition: all 0.3s ease-in-out;
-                    }
-                }
-                .x {
-                    background: none;
-                    box-shadow: none;
-                    &::after {
-                        transform: rotate(45deg);
-                    }
-                    &::before {
-                        transform: rotate(-45deg);
-                    }
-                }
-            }
-
-            .show {
-                @include flexbox(column, center, center);
-                height: 400px;
-                background: rgba($background, $alpha: 0.9);
-                width: 100%;
-                position: absolute;
-                top: 80px;
-                left: 0;
-                z-index: 6;
-                animation-name: menu;
-                animation-timing-function: 0.8s;
-                animation-duration: 0.8s;
-                a {
-                    width: 100%;
-                    color: $cards;
-                    text-align: center;
-                    font-size: 15px;
-                    font-weight: bolder;
-                    font-family: $spartan;
-                    text-decoration: none;
-                    padding: 40px 0px;
-                }
-            }
-        }
+        @include header-mobile;
         main {
+            .imagen {
+                @include flexbox(row, center, flex-start);
+                @include size(55vh, 100%);
+            }
             article {
                 #quienes-somos {
-                    height: auto;
+                    @include size(auto, initial);
                     h2 {
                         margin: 40px auto;
                     }
                     .contenidos {
                         @include flexbox(column, center, center);
-                        .contenido-imagen {
-                            img {
-                                width: 550px;
-                            }
+                        .contenido-imagen img {
+                            @include size(initial, 550px);
                         }
                         .contenido-texto {
-                            height: 450px;
-                            width: 550px;
+                            @include size(450px, 550px);
                             p {
-                                width: 550px;
+                                @include size(initial, 550px);
+                            }
+                        }
+                    }
+                }
+                #productos .productos {
+                    @include modal-tablet;
+                    .destacados .productos-destacados {
+                        .producto {
+                            @include size(initial, 180px);
+                            margin: 0px 0px;
+                            .producto-imagen {
+                                @include size(240px, 180px);
+                            }
+                            .producto-descripcion {
+                                @include size(initial, 180px);
+                                min-height: 85px;
+                                h3 {
+                                    font-size: 16px;
+                                }
                             }
                         }
                     }
@@ -591,96 +613,108 @@ html {
         }
     }
 }
-@media (max-width: 560px) {
+@media (max-width: 690px) {
+    html body main article #productos .productos {
+        .mas-productos {
+            @include flexbox(column, flex-start, flex-start);
+            .categorias {
+                @include size(initial, 100%);
+                .menu-categorias {
+                    @include grid(3, space-around, initial);
+                    border: 1px solid $titles;
+                }
+            }
+            .productos {
+                @include size(initial, 100%);
+                .producto {
+                    @include size(450px, 260px);
+                    .producto-imagen {
+                        @include size(350px, 260px);
+                        min-height: 350px;
+                    }
+                }
+            }
+        }
+        @include modal-tb2;
+    }
+}
+@media (max-width: 580px) {
     html body {
         .show-menu {
-            width: 100vw;
+            @include size(initial, 100vw);
         }
         main {
             .imagen {
+                @include size(55vh, initial);
                 .contenido {
-                    .texto-imagen {
+                    .contenido-texto {
                         h1,
                         p {
                             text-align: center;
                         }
                     }
-                    img {
+                    .contenido-imagen img {
                         display: none;
                     }
                 }
             }
             article {
-                #quienes-somos {
-                    .contenidos {
-                        .contenido-imagen {
-                            img {
-                                width: 350px;
-                            }
-                        }
-                        .contenido-texto {
-                            width: 100vw;
-                            height: auto;
-                            p {
-                                width: 350px;
-                            }
+                #quienes-somos .contenidos {
+                    .contenido-imagen img {
+                        @include size(initial, 350px);
+                    }
+                    .contenido-texto {
+                        @include size(auto, 100vw);
+                        p {
+                            @include size(initial, 350px);
                         }
                     }
                 }
                 #productos {
                     .productos {
-                        .producto {
-                            height: 400px;
-                            width: 200px;
-                            padding: 7px;
-                            .producto-imagen,
-                            .producto-descripcion,
-                            button {
-                                width: 180px;
-                            }
-                            .producto-imagen {
-                                height: 170px;
-                            }
-                            .producto-descripcion {
-                                height: 160px;
-                                h3 {
-                                    font-size: 17px;
+                        .destacados .productos-destacados {
+                            @include grid(2, center, initial);
+                            grid-column-gap: 10px;
+                        }
+                        .mas-productos .productos {
+                            @include grid(2, space-around, initial);
+                            @include size(initial, 100%);
+                            grid-column-gap: 20px;
+                            .producto {
+                                @include size(400px, 220px);
+                                min-height: 400px;
+                                .producto-imagen {
+                                    @include size(300px, 220px);
+                                    min-height: 300px;
                                 }
-                                .descripcion {
-                                    font-size: 15px;
-                                    i {
-                                        font-size: 10px;
-                                    }
-                                }
-                                .descripcion-collapse {
-                                    font-size: 12px;
-                                    line-height: 18px;
-                                    width: 180px;
-                                    top: 85px;
-                                }
-                                .caracteristicas {
-                                    .precio {
-                                        p {
-                                            font-size: 15px;
-                                        }
-                                    }
-                                }
-                            }
-                            button {
-                                height: 40px;
-                                font-size: 14px;
-                                padding: 12px;
-                                margin-bottom: 0px;
                             }
                         }
                     }
                 }
             }
         }
-        footer {
-            .redes {
-                .red {
-                    margin: 10px 7px;
+        footer .redes .red {
+            margin: 10px 7px;
+        }
+    }
+}
+@media (max-width: 490px) {
+    html body main article #productos .productos .mas-productos .productos .producto {
+        @include size(335px, 170px);
+        min-height: 335px;
+        .producto-imagen {
+            @include size(260px, 170px);
+            min-height: 260px;
+        }
+        .producto-descripcion {
+            min-height: 75px;
+            h3 {
+                font-size: 15px;
+            }
+            .precio {
+                @include flexbox(row, center, flex-end);
+                p {
+                    font-size: 17px;
                 }
             }
         }
@@ -690,83 +724,53 @@ html {
     html body {
         main {
             .imagen {
-                .shadow-slider {
-                    .contenido {
-                        width: 100%;
-                        display: flex;
-                        flex-direction: row;
-                        justify-content: center;
-                        .contenido-texto {
-                            h1 {
-                                font-size: 50px;
-                            }
-                            p {
-                                font-size: 18px;
-                            }
+                @include size(35vh, 100vw);
+                .shadow-slider .contenido {
+                    @include flexbox(row, center, initial);
+                    @include size(initial, 100%);
+                    .contenido-texto {
+                        h1 {
+                            font-size: 50px;
+                        }
+                        p {
+                            font-size: 18px;
                         }
                     }
                 }
             }
-            article {
-                #productos {
+
+            article #productos .productos {
+                .destacados .productos-destacados {
+                    @include grid(2, space-around, initial);
+                    .producto {
+                        @include size(310px, 160px);
+                        .producto-imagen {
+                            @include size(220px, 160px);
+                        }
+                        .producto-descripcion {
+                            @include size(110px, 160px);
+                        }
+                    }
+                    @include modal-mobile;
+                }
+                .mas-productos {
                     .productos {
                         .producto {
-                            height: 350px;
-                            width: 170px;
-                            margin: 10px auto;
-                            .producto-imagen,
-                            .producto-descripcion,
-                            button {
-                                width: 140px;
-                            }
+                            @include size(310px, 160px);
                             .producto-imagen {
-                                height: 130px;
-                                margin-top: 0;
+                                @include size(220px, 160px);
                             }
                             .producto-descripcion {
-                                height: auto;
-                                h3 {
-                                    font-size: 15px;
-                                }
-                                .descripcion {
-                                    font-size: 12px;
-                                }
-                                .descripcion-collapse {
-                                    font-size: 11px;
-                                    line-height: 13px;
-                                    width: 140px;
-                                    top: 60px;
-                                }
-                                h4 {
-                                    font-size: 12px;
-                                    margin: 5px 0px;
-                                }
-                                .caracteristicas {
-                                    .precio {
-                                        width: 50%;
-                                        p {
-                                            font-size: 17px;
-                                            margin-top: 10px;
-                                        }
-                                    }
-                                }
-                            }
-                            button {
-                                margin-bottom: 0px;
-                                font-size: 11px;
+                                @include size(110px, 160px);
                             }
                         }
+                        @include modal-mobile;
                     }
                 }
             }
         }
-        footer {
-            .redes {
-                .red {
-                    height: 50px;
-                    width: 50px;
-                }
-            }
+        footer .redes .red {
+            @include size(50px, 50px);
         }
     }
 }
@@ -774,59 +778,55 @@ html {
     html body {
         main {
             article {
-                #quienes-somos {
-                    .contenidos {
-                        .contenido-imagen {
-                            img {
-                                width: 290px;
-                                height: 390px;
-                            }
-                        }
-                        .contenido-texto {
-                            width: 280px;
-                            p {
-                                margin-top: 30px;
-                                width: 280px;
-                            }
+                #quienes-somos .contenidos {
+                    .contenido-imagen img {
+                        @include size(390px, 290px);
+                    }
+                    .contenido-texto {
+                        @include size(initial, 280px);
+                        p {
+                            @include size(initial, 280px);
+                            margin-top: 30px;
                         }
                     }
                 }
+
                 #productos {
                     .productos {
-                        .producto {
-                            width: 150px;
-                            .producto-imagen,
-                            .producto-descripcion,
-                            button {
-                                width: 130px;
-                            }
-                            .producto-imagen {
-                                height: 120px;
-                            }
-                            .producto-descripcion {
-                                .descripcion-collapse {
-                                    width: 130px;
-                                    top: 65px;
+                        .destacados .productos-destacados {
+                            @include grid(2, initial, initial);
+                            .producto {
+                                @include size(initial, 140px);
+                                .producto-imagen {
+                                    @include size(190px, 140px);
+                                }
+                                .producto-descripcion {
+                                    @include size(initial, 140px);
+                                    h3 {
+                                        font-size: 15px;
+                                    }
                                 }
                             }
-                            button {
-                                padding: 0px;
-                                font-size: 12px;
+                        }
+                        .mas-productos .productos .producto {
+                            @include size(285px, 140px);
+                            min-height: 285px;
+                            .producto-imagen {
+                                @include size(210px, 140px);
+                                min-height: 210px;
+                            }
+                            .producto-descripcion {
+                                min-height: 90px;
                             }
                         }
                     }
                 }
             }
         }
-        footer {
-            .redes {
-                .red {
-                    height: 35px;
-                    width: 35px;
-                    i {
-                        font-size: 20px;
-                    }
-                }
+        footer .redes .red {
+            @include size(35px, 35px);
+            i {
+                font-size: 20px;
             }
         }
     }
@@ -837,5 +837,25 @@ html {
     }
     100% {
         height: 400px;
+    }
+}
+@keyframes aparicion {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+    100% {
+        display: flex;
+        opacity: 1;
+    }
+}
+@keyframes desaparicion {
+    0% {
+        display: flex;
+        opacity: 1;
+    }
+    100% {
+        display: none;
+        opacity: 0;
     }
 }

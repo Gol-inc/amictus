@@ -1,50 +1,38 @@
 @mixin crear_cuenta {
     h3 {
         color: $text;
-        font-size: 30px;
-        font-family: $spartan;
+        font: 30px $spartan;
         text-align: center;
     }
     form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
+        @include flexbox(column, center, flex-start);
+        @include size(initial, 350px);
         padding: 10px;
         margin: 0 auto;
-        width: 350px;
         input {
-            padding: 10px;
-            padding-top: 25px;
-            padding-bottom: 2px;
-            width: 250px;
-            font-family: $spartan;
-            border: none;
-            outline: none;
-            margin: 0px auto;
+            @include size(initial, 250px);
             border: 2px solid $text;
             -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
             -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
             box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
+            font-family: $spartan;
+            margin: 0px auto;
+            outline: none;
+            padding: 25px 10px 2px;
         }
         label {
-            position: relative;
-            top: 20px;
-            left: 52px;
-            font-size: 13px;
-            font-family: $spartan;
-            font-weight: bolder;
+            @include position(relative, 20px, 52px, initial, initial);
+            font: bolder 13px $spartan;
             color: $text;
         }
         button {
-            border: none;
-            width: 250px;
-            outline: none;
-            background: none;
-            padding: 12px 24px;
+            @include size(initial, 250px);
             background: $text;
+            border: none;
             color: $cards;
             margin: 10px auto;
+            outline: none;
+            padding: 12px 24px;
         }
     }
 }

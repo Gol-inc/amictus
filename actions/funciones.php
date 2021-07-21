@@ -6,7 +6,6 @@ function registrarUsuario()
     $email = $_POST['email_r'];
     $pwd = $_POST['pwd_r'];
     $msg;
-
     $pwd_sec = password_hash($pwd, PASSWORD_DEFAULT);
     $user_existe = $pdo->prepare("SELECT * FROM usuarios WHERE email_usuario = '$email'");
     $user_existe->execute();
@@ -33,13 +32,10 @@ function validarUsuario()
     $pwd = $_POST['pwd_v'];
     $msg;
     $cont = 0;
-
     $validacion = $pdo->prepare("SELECT id_usuario, nombre_usuario, email_usuario, pass_usuario FROM usuarios WHERE email_usuario = '$email'");
     $validacion->execute();
     $listadoEmails = $validacion->fetchAll(PDO::FETCH_ASSOC);
-
     foreach ($listadoEmails as $user) {
-
         if (password_verify($pwd, $user['pass_usuario'])) {
             $cont++;
             $id_user = $user['id_usuario'];
@@ -50,13 +46,12 @@ function validarUsuario()
             return $msg;
         }
     }
-
     if ($cont) {
         session_start();
-        $_SESSION['usuario_actual'][0]['id_usuario'] = $id_user;
-        $_SESSION['usuario_actual'][0]['nombre'] = $nombre_user;
-        $_SESSION['usuario_actual'][0]['email'] = $email_user;
-        $msg = 'Inicio de sesion correcto.';
+        $_SESSION['usuario_amictus'][0]['id_usuario'] = $id_user;
+        $_SESSION['usuario_amictus'][0]['nombre'] = $nombre_user;
+        $_SESSION['usuario_amictus'][0]['email'] = $email_user;
+        $msg = 'Inicio de sesión correcto.';
         return $msg;
     } else {
         $msg = 'Error al ingresar.';
@@ -71,10 +66,6 @@ function get($item)
     $array_item = $traer_item->fetchAll(PDO::FETCH_ASSOC);
     return $array_item;
 }
-// function agregarProducto(){}
-
-// function editarProducto(){}
-
 function relacionColorProducto()
 {
     include "conexion.php";
@@ -86,7 +77,6 @@ INNER JOIN colores ON colores_productos.id_color = colores.id_color");
     $listEditColores = $editColores->fetchAll(PDO::FETCH_ASSOC);
     return $listEditColores;
 }
-
 function relacionImagenProducto()
 {
     include "conexion.php";
@@ -97,4 +87,70 @@ INNER JOIN imagen ON imagen_producto.id_imagen = imagen.id_imagen");
     $consultaImagenes->execute();
     $lista_imagenes = $consultaImagenes->fetchAll(PDO::FETCH_ASSOC);
     return $lista_imagenes;
+}
+function loadArray($arr, $arr_imgs, $arr_colors)
+{
+    $array_productos = [];
+    $cant_img = 0;
+    $i = 0;
+    $j = 0;
+    foreach ($arr as $productos) {
+        $array_productos[$i]['id'] = $productos['id_producto'];
+        foreach ($arr_imgs as $img) {
+            if ($img['id_producto'] == $productos['id_producto']) {
+                $array_productos[$i]['imagen'][$cant_img] = "data:image/jpg;base64," . base64_encode($img['tamano_imagen']);
+                $cant_img++;
+            }
+        }
+        $cant_img = 0;
+        $array_productos[$i]['id_producto'] = $productos['id_producto'];
+        $array_productos[$i]['nombre'] = $productos['nombre_producto'];
+        $array_productos[$i]['descripcion'] = $productos['descripcion_producto'];
+        $array_productos[$i]['categoria'] = $productos['categoria_producto'];
+        $array_productos[$i]['precio'] = $productos['precio_producto'];
+        $array_productos[$i]['stock'] = $productos['stock_producto'];
+        foreach ($arr_colors as $col) {
+            if ($col['id_producto'] == $productos['id_producto']) {
+                $array_productos[$i]['colores'][$j]['nombre'] = $col['nombre_color'];
+                $array_productos[$i]['colores'][$j]['codigo'] = $col['hex_color'];
+                $j++;
+            }
+        }
+        $j = 0;
+        $array_productos[$i]['destacado'] = $productos['destacado'];
+        $i++;
+    }
+    return $array_productos;
+}
+function getTable($id, $table, $data, $query)
+{
+    include 'conexion.php';
+    $user_for_id = $pdo->prepare("SELECT $data FROM $table WHERE $query='$id'");
+    $user_for_id->execute();
+    $nombre_usuario = $user_for_id->fetchAll(PDO::FETCH_ASSOC);
+    return $nombre_usuario[0][$data];
+}
+function cantVentas()
+{
+    include 'conexion.php';
+    $ventas = $pdo->prepare("SELECT id_venta FROM ventas");
+    $ventas->execute();
+    $arr = [];
+    $lista_ventas = $ventas->fetchAll(PDO::FETCH_ASSOC);
+    for ($i = 0; $i < count($lista_ventas); $i++) {
+        if ($lista_ventas[$i]['id_venta'] != $lista_ventas[$i - 1]['id_venta']) {
+            $arr[$i]['id_venta'] = $lista_ventas[$i]['id_venta'];
+        }
+    }
+    return $arr;
+}
+function montoTotal()
+{
+    include 'conexion.php';
+    $arr_monto = get('ventas');
+    $total = 0;
+    foreach ($arr_monto as $monto) {
+        $total += $monto['total_prod'];
+    }
+    return $total;
 }

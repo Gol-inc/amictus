@@ -1,17 +1,15 @@
 @mixin header {
     header {
         @include flexbox(row, space-between, center);
+        @include position(sticky, 0, initial, initial, initial);
+        @include size(initial, 100%);
         background-color: $background;
-        padding: 10px;
-        position: absolute;
-        top: 0;
-        z-index: 5;
-        width: 100%;
+        z-index: 8;
         .btn-menu,
         .menu-hamburguesa {
+            @include size(0, 0);
             display: none;
-            transition: 0.3s all;
-            height: 0;
+            transition: 0.6s all;
         }
         .logo {
             @include flexbox(row, center, center);
@@ -21,62 +19,88 @@
             @include flexbox(row, center, center);
             a {
                 color: $cards;
-                text-decoration: none;
-                font-family: $spartan;
-                font-weight: bolder;
-                font-size: 15px;
+                font: bolder 15px $spartan;
                 padding: 25px;
+                text-decoration: none;
                 transition: 0.5s all;
             }
         }
-        .sesion {
-            position: absolute;
-            right: 90px;
-            z-index: 6;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            p {
-                color: $cards;
-                font-family: $spartan;
-                font-weight: bolder;
-                text-decoration: none;
-                font-size: 10px;
-                padding: 5px;
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-            .sesion-on {
-                font-size: 13px;
-            }
-            a {
-                color: $cards;
-                i {
-                    font-size: 19px;
-                }
-            }
-        }
+
         .carrito {
             @include flexbox(row, center, center);
-            position: relative;
+            @include position(relative, initial, initial, initial, initial);
             padding: 10px;
             .cantidad-carrito {
                 @include flexbox(row, center, center);
+                @include position(absolute, 20px, 7px, initial, initial);
+                @include size(15px, 15px);
                 background-color: white;
-                height: 15px;
-                width: 15px;
-                position: absolute;
-                top: 20px;
-                left: 7px;
-                padding: 10px;
                 border-radius: 50px;
                 color: $background;
                 font-family: $questrial;
+                padding: 10px;
             }
             &:hover {
                 cursor: pointer;
+            }
+        }
+    }
+}
+
+@mixin header-mobile {
+    header {
+        .menu-principal {
+            display: none;
+        }
+        .btn-menu {
+            @include size(50px, 50px);
+            @include flexbox(row, center, center);
+            .btn-hamb {
+                @include size(4px, 35px);
+                background-color: $cards;
+                &::after,
+                &::before {
+                    @include position(absolute, initial, initial, initial, initial);
+                    @include size(4px, 35px);
+                    background-color: $cards;
+                    content: "";
+                    transition: all 0.3s ease-in-out;
+                }
+                &::after {
+                    transform: translateY(-10px);
+                }
+                &::before {
+                    transform: translateY(10px);
+                }
+            }
+            .x {
+                background: none;
+                box-shadow: none;
+                &::after {
+                    transform: rotate(45deg);
+                }
+                &::before {
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+
+        .show {
+            @include flexbox(column, center, center);
+            @include size(400px, 100%);
+            @include position(absolute, 60px, 0, initial, initial);
+            animation-name: menu;
+            animation-duration: 0.6s;
+            animation-timing-function: 0.6s;
+            background: rgba($background, $alpha: 0.9);
+            z-index: 6;
+            a {
+                @include size(initial, 100%);
+                color: $cards;
+                text-align: center;
+                font: bolder 15px $spartan;
+                padding: 40px 0px;
+                text-decoration: none;
             }
         }
     }

@@ -3,9 +3,34 @@
     padding: 0;
     box-sizing: border-box;
 }
+@mixin size($height, $width) {
+    height: $height;
+    width: $width;
+}
 @mixin flexbox($position, $justify, $align) {
     display: flex;
     flex-direction: $position;
+    justify-content: $justify;
+    align-items: $align;
+}
+@mixin position($type, $top, $left, $right, $bottom) {
+    position: $type;
+    top: $top;
+    left: $left;
+    right: $right;
+    bottom: $bottom;
+}
+@mixin grid($cant, $justify, $align) {
+    display: grid;
+    @if $cant == 1 {
+        grid-template-columns: auto;
+    } @else if $cant == 2 {
+        grid-template-columns: auto auto;
+    } @else if $cant == 3 {
+        grid-template-columns: auto auto auto;
+    } @else if $cant == 4 {
+        grid-template-columns: auto auto auto auto;
+    }
     justify-content: $justify;
     align-items: $align;
 }

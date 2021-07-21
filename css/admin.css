@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Spartan&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Alata&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
 * {
@@ -9,128 +8,148 @@
 
 html body {
   padding: 15px; }
-  html body .titulo {
-    height: 100px;
-    vertical-align: middle;
+  html body .header {
     display: flex;
     flex-direction: row;
-    align-items: center; }
-    html body .titulo h1 {
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    vertical-align: middle; }
+    html body .header h1 {
       color: #6b567a;
       font-family: "Spartan", sans-serif; }
+    html body .header a {
+      color: #6b567a;
+      font-family: "Spartan", sans-serif;
+      margin-right: 10px;
+      text-decoration: none; }
   html body .estadisticas {
     display: grid;
     grid-template-columns: auto auto auto auto;
     justify-content: space-between;
     align-items: center; }
     html body .estadisticas .card {
-      background: #6b567a;
-      height: 200px;
-      width: 250px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center; }
+      align-items: center;
+      height: 200px;
+      width: 250px;
+      background: #6b567a; }
       html body .estadisticas .card i,
       html body .estadisticas .card p,
       html body .estadisticas .card h2 {
-        color: #f1e3d3; }
+        color: #dfa2a9; }
       html body .estadisticas .card i {
         font-size: 55px; }
       html body .estadisticas .card h2 {
         font-family: "Spartan", sans-serif;
         padding: 15px 0px; }
       html body .estadisticas .card p {
-        font-family: "Spartan", sans-serif;
-        font-size: 30px;
-        font-weight: bolder; }
+        font: bolder 30px "Spartan", sans-serif; }
   html body .p {
     background: #6b567a;
     margin: 10px 0px; }
     html body .p .titulo {
-      height: 75px;
       display: flex;
       flex-direction: row;
-      align-items: center; }
+      justify-content: initial;
+      align-items: center;
+      height: 75px;
+      width: initial; }
       html body .p .titulo h2 {
-        color: #f1e3d3;
+        color: #dfa2a9;
         font-family: "Spartan", sans-serif;
         padding: 0px 20px; }
       html body .p .titulo button {
-        background: #f1e3d3;
+        background: #dfa2a9;
+        border: none;
         color: #6b567a;
         font-family: "Spartan", sans-serif;
-        padding: 12px 24px;
-        border: none;
         outline: none;
+        padding: 12px 24px;
         transition: 0.3s all; }
         html body .p .titulo button:hover {
           cursor: pointer;
           transform: scale(1.1); }
     html body .p .modals {
-      background: rgba(0, 0, 0, 0.55);
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: initial;
+      bottom: initial;
+      height: 100vh;
+      width: 100vw;
+      background: rgba(0, 0, 0, 0.55);
       transition: 0.5s all; }
       html body .p .modals form {
-        width: 300px;
-        background: white;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-        padding: 10px;
+        position: relative;
+        top: initial;
+        left: initial;
+        right: initial;
+        bottom: initial;
+        height: initial;
+        width: 300px;
+        background: white;
         margin: 0 auto;
-        position: relative; }
+        padding: 10px; }
         html body .p .modals form .cerrar {
           position: absolute;
           top: 5px;
-          right: 5px; }
+          left: initial;
+          right: 5px;
+          bottom: initial; }
           html body .p .modals form .cerrar:hover {
             cursor: pointer; }
         html body .p .modals form h3 {
           color: #6b567a;
-          font-family: "Spartan", sans-serif;
-          font-weight: bolder;
+          font: bolder "Spartan", sans-serif;
           text-align: center;
           margin: 10px auto; }
         html body .p .modals form input {
-          padding: 10px;
-          padding-top: 25px;
-          padding-bottom: 2px;
+          height: initial;
           width: 260px;
-          font-family: "Spartan", sans-serif;
-          border: none;
-          outline: none;
-          margin: 0px auto;
           border: 2px solid #6b567a;
           -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
           -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
-          box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45); }
+          box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
+          font-family: "Spartan", sans-serif;
+          margin: 0px auto;
+          outline: none;
+          padding: 25px 10px 2px; }
+        html body .p .modals form input[type="checkbox"] {
+          height: 25px;
+          width: initial;
+          box-shadow: none; }
         html body .p .modals form label {
           position: relative;
           top: 20px;
           left: 22px;
-          font-size: 13px;
-          font-family: "Spartan", sans-serif;
-          font-weight: bolder;
-          color: #6b567a; }
+          right: initial;
+          bottom: initial;
+          color: #6b567a;
+          font: bolder 13px "Spartan", sans-serif; }
         html body .p .modals form .colores {
           display: grid;
           grid-template-columns: auto auto auto auto;
           justify-content: center;
           align-items: center;
-          height: 70px;
           position: relative;
           top: 10px;
-          left: 5px; }
+          left: 5px;
+          right: initial;
+          bottom: initial;
+          height: 70px;
+          width: initial; }
           html body .p .modals form .colores .color {
             display: flex;
             flex-direction: column;
@@ -140,45 +159,47 @@ html body {
             html body .p .modals form .colores .color label {
               position: relative;
               top: 0;
-              left: 0; }
+              left: 0;
+              right: initial;
+              bottom: initial; }
             html body .p .modals form .colores .color input[type="checkbox"] {
+              height: initial;
               width: auto; }
         html body .p .modals form button {
-          border: none;
+          height: initial;
           width: 250px;
-          outline: none;
-          background: none;
-          padding: 12px 24px;
           background: #6b567a;
-          color: #f1e3d3;
-          margin: 10px auto; }
+          border: none;
+          color: #dfa2a9;
+          margin: 10px auto;
+          outline: none;
+          padding: 12px 24px; }
         html body .p .modals form .mensaje {
           display: none; }
     html body .p .disabled {
       display: none; }
     html body .p table {
-      background: #f1e3d3;
+      height: initial;
       width: 100%;
+      background: #dfa2a9;
       border-collapse: collapse; }
       html body .p table thead tr th {
-        padding: 10px;
-        font-family: "Spartan", sans-serif;
-        font-weight: bolder;
-        text-align: center;
-        border-bottom: 1px solid #6b567a; }
-      html body .p table tbody tr td {
-        font-family: "Spartan", sans-serif;
-        font-weight: lighter;
-        text-align: center;
-        margin: auto;
         border-bottom: 1px solid #6b567a;
-        padding: 10px; }
+        font: bolder 17px "Spartan", sans-serif;
+        padding: 10px;
+        text-align: center; }
+      html body .p table tbody tr td {
+        border-bottom: 1px solid #6b567a;
+        font: lighter 14px "Spartan", sans-serif;
+        margin: auto;
+        padding: 10px;
+        text-align: center; }
         html body .p table tbody tr td .editar,
         html body .p table tbody tr td .eliminar {
-          color: white;
-          padding: 8px;
           border: none;
           border-radius: 10px;
+          color: white;
+          padding: 8px;
           transition: 0.4s all; }
           html body .p table tbody tr td .editar i,
           html body .p table tbody tr td .eliminar i {
@@ -193,77 +214,95 @@ html body {
           background: red; }
         html body .p table tbody tr td .edit,
         html body .p table tbody tr td .delete {
-          background: rgba(0, 0, 0, 0.55);
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100vw;
-          height: 100vh;
           display: flex;
           flex-direction: row;
           justify-content: center;
           align-items: center;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: initial;
+          bottom: initial;
+          height: 100vh;
+          width: 100vw;
+          background: rgba(0, 0, 0, 0.55);
           transition: 0.5s all; }
           html body .p table tbody tr td .edit form,
           html body .p table tbody tr td .delete form {
-            width: 300px;
-            background: white;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            padding: 10px;
+            position: relative;
+            top: initial;
+            left: initial;
+            right: initial;
+            bottom: initial;
+            height: initial;
+            width: 300px;
+            background: white;
             margin: 0 auto;
-            position: relative; }
+            padding: 10px; }
             html body .p table tbody tr td .edit form .closed,
-            html body .p table tbody tr td .delete form .closed {
+            html body .p table tbody tr td .edit form .closed_d,
+            html body .p table tbody tr td .delete form .closed,
+            html body .p table tbody tr td .delete form .closed_d {
               position: absolute;
               top: 5px;
+              left: initial;
               right: 5px;
+              bottom: initial;
               z-index: 10; }
               html body .p table tbody tr td .edit form .closed:hover,
-              html body .p table tbody tr td .delete form .closed:hover {
+              html body .p table tbody tr td .edit form .closed_d:hover,
+              html body .p table tbody tr td .delete form .closed:hover,
+              html body .p table tbody tr td .delete form .closed_d:hover {
                 cursor: pointer; }
             html body .p table tbody tr td .edit form h3,
             html body .p table tbody tr td .delete form h3 {
               color: #6b567a;
-              font-family: "Spartan", sans-serif;
-              font-weight: bolder;
-              text-align: center;
-              margin: 10px auto; }
+              font: bolder "Spartan", sans-serif;
+              margin: 10px auto;
+              text-align: center; }
             html body .p table tbody tr td .edit form input,
             html body .p table tbody tr td .delete form input {
-              padding: 10px;
-              padding-top: 25px;
-              padding-bottom: 2px;
+              height: initial;
               width: 260px;
-              font-family: "Spartan", sans-serif;
-              border: none;
-              outline: none;
-              margin: 0px auto;
               border: 2px solid #6b567a;
               -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
               -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
-              box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45); }
+              box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.45);
+              margin: 0px auto;
+              font-family: "Spartan", sans-serif;
+              outline: none;
+              padding: 25px 10px 2px; }
+            html body .p table tbody tr td .edit form input[type="checkbox"],
+            html body .p table tbody tr td .delete form input[type="checkbox"] {
+              height: 25px;
+              width: initial;
+              box-shadow: none; }
             html body .p table tbody tr td .edit form label,
             html body .p table tbody tr td .delete form label {
               position: relative;
               top: 20px;
               left: 22px;
-              font-size: 13px;
-              font-family: "Spartan", sans-serif;
-              font-weight: bolder;
-              color: #6b567a; }
+              right: initial;
+              bottom: initial;
+              color: #6b567a;
+              font: bolder 13px "Spartan", sans-serif; }
             html body .p table tbody tr td .edit form .colores,
             html body .p table tbody tr td .delete form .colores {
               display: grid;
               grid-template-columns: auto auto auto auto;
               justify-content: center;
               align-items: center;
-              height: 70px;
               position: relative;
               top: 10px;
-              left: 5px; }
+              left: 5px;
+              right: initial;
+              bottom: initial;
+              height: 70px;
+              width: initial; }
               html body .p table tbody tr td .edit form .colores .color,
               html body .p table tbody tr td .delete form .colores .color {
                 display: flex;
@@ -275,24 +314,40 @@ html body {
                 html body .p table tbody tr td .delete form .colores .color label {
                   position: relative;
                   top: 0;
-                  left: 0; }
+                  left: 0;
+                  right: initial;
+                  bottom: initial; }
                 html body .p table tbody tr td .edit form .colores .color input[type="checkbox"],
                 html body .p table tbody tr td .delete form .colores .color input[type="checkbox"] {
+                  height: initial;
                   width: auto; }
             html body .p table tbody tr td .edit form button,
             html body .p table tbody tr td .delete form button {
-              border: none;
+              height: initial;
               width: 250px;
-              outline: none;
-              background: none;
-              padding: 12px 24px;
+              border: none;
               background: #6b567a;
-              color: #f1e3d3;
-              margin: 10px auto; }
+              color: #dfa2a9;
+              margin: 10px auto;
+              outline: none;
+              padding: 12px 24px; }
             html body .p table tbody tr td .edit form .mensaje,
             html body .p table tbody tr td .delete form .mensaje {
               display: none; }
         html body .p table tbody tr td .disabled {
           display: none; }
+  html body .tablas {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    height: initial;
+    width: 100%; }
+    html body .tablas .colores,
+    html body .tablas .categorias {
+      height: initial;
+      width: 50%; }
+    html body .tablas .categorias {
+      margin-left: 10px; }
 
 /*# sourceMappingURL=admin.css.map */
